@@ -132,7 +132,7 @@ function CreateRiff() {
         <div style={{ flex: 1, minWidth: '300px' }}>
           {/* Form Section */}
           <div style={{ marginBottom: '20px' }}>
-            <label>Riff Name:</label><br />
+            <label>Riff Name</label><br />
             <input
               type="text"
               placeholder="Enter riff name"
@@ -143,7 +143,7 @@ function CreateRiff() {
           </div>
 
           <div style={{ marginBottom: '20px' }}>
-            <label>Category:</label><br />
+            <label>Category</label><br />
             <input
               type="text"
               placeholder="Optional category"
@@ -154,7 +154,7 @@ function CreateRiff() {
           </div>
 
           <div style={{ marginBottom: '20px' }}>
-            <label>Choose Audio (mp3, wav) or Record:</label><br />
+            <label>Choose Audio (mp3, wav) or Record</label><br />
             <input
               type="file"
               accept="audio/mp3, audio/wav, audio/webm"
@@ -205,7 +205,7 @@ function CreateRiff() {
           )}
 
           <div style={{ marginTop: '40px' }}>
-            <h3>Metronome:</h3>
+            <h3>Metronome</h3>
 
             <div id="metronome-light" style={{
               width: '30px',

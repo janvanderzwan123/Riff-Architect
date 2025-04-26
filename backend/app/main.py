@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.models import models
 from app.database import engine
-from app.api.endpoints import riffs
+from app.api.endpoints import riffs, songs, categories
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -19,6 +19,8 @@ app.add_middleware(
 
 # Include routers
 app.include_router(riffs.router, prefix="/api")
+app.include_router(songs.router, prefix="/api")
+app.include_router(categories.router, prefix="/api")
 
 @app.get("/ping")
 async def ping():
