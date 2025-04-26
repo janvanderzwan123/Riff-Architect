@@ -7,6 +7,13 @@ router = APIRouter()
 
 UPLOAD_DIR = "app/media/riffs/"
 
+@router.get("/riffs/")
+def get_riffs():
+    db = SessionLocal()
+    riffs = db.query(Riff).all()
+    db.close()
+    return riffs
+
 @router.post("/riffs/upload/")
 async def upload_riff(
     file: UploadFile = File(...),
