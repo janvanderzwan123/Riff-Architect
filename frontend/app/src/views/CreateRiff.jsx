@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
-import { uploadRiff } from '../services/api';
+import { uploadRiff, getCategories } from '../services/api';
 import { Link } from 'react-router-dom';
 
 function CreateRiff() {
   const [name, setName] = useState('');
   const [category, setCategory] = useState('');
+  const [categories, setCategories] = useState([]);
   const [file, setFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
@@ -21,6 +22,10 @@ function CreateRiff() {
   const mediaRecorderRef = useRef(null);
   const audioStreamRef = useRef(null);
   const timerRef = useRef(null);
+
+  useEffect(() => {
+    getCategories().then(setCategories);
+  }, []);
 
   const handleFileChange = (e) => {
     const selected = e.target.files[0];
@@ -144,13 +149,16 @@ function CreateRiff() {
 
           <div style={{ marginBottom: '20px' }}>
             <label>Category</label><br />
-            <input
-              type="text"
-              placeholder="Optional category"
+            <select
               value={category}
               onChange={(e) => setCategory(e.target.value)}
               style={{ width: '100%', padding: '10px', marginTop: '8px' }}
-            />
+            >
+              <option value="">Uncategorized</option>
+              {categories.map((cat) => (
+                <option key={cat.id} value={cat.name}>{cat.name}</option>
+              ))}
+            </select>
           </div>
 
           <div style={{ marginBottom: '20px' }}>
