@@ -20,7 +20,7 @@ async def upload_riff(
     name: str = Form("Unnamed"),
     category: str = Form("Uncategorized")
 ):
-    if not file.filename.endswith((".mp3", ".wav")):
+    if not file.filename.endswith((".mp3", ".wav", ".webm")):
         raise HTTPException(status_code=400, detail="Invalid file type")
     
     os.makedirs(UPLOAD_DIR, exist_ok=True)
