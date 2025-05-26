@@ -15,6 +15,22 @@ export async function getCategories() {
   return response.json();
 }
 
+export async function createCategory(name) {
+  const formData = new FormData();
+  formData.append('name', name);
+
+  const response = await fetch(`${BASE_URL}/categories/`, {
+    method: 'POST',
+    body: formData,
+  });
+
+  if (!response.ok) {
+    throw new Error('Creation failed');
+  }
+
+  return await response.json();
+}
+
 export async function uploadRiff(file, name, category) {
     const formData = new FormData();
     formData.append("file", file);
